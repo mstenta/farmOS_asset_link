@@ -3,12 +3,19 @@
 namespace Drupal\farmos_asset_link\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
+use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Defines FarmAssetLinkDefaultPluginRepositoryController class.
  */
 class FarmAssetLinkDefaultPluginRepositoryController extends ControllerBase {
+
+  public function __construct(
+    EntityTypeManagerInterface $entity_type_manager,
+  ) {
+    $this->entityTypeManager = $entity_type_manager;
+  }
 
   /**
    * {@inheritdoc}

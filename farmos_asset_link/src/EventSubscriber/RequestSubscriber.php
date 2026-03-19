@@ -16,39 +16,11 @@ use Symfony\Component\HttpKernel\KernelEvents;
  */
 class RequestSubscriber implements EventSubscriberInterface  {
 
-  /**
-   * The Argument Resolver service.
-   *
-   * @var \Symfony\Component\HttpKernel\Controller\ArgumentResolverInterface
-   */
-  protected $argumentResolver;
-
-  /**
-   * The Controller Resolver service.
-   *
-   * @var \Drupal\Core\Controller\ControllerResolverInterface
-   */
-  protected $controllerResolver;
-
-  /**
-   * The Route Provider service.
-   *
-   * @var \Drupal\Core\Routing\RouteProviderInterface
-   */
-  protected $routeProvider;
-
-  /**
-   * RequestSubscriber constructor.
-   *
-   * @param \Drupal\Core\Routing\RouteProviderInterface $routeProvider
-   * @param \Drupal\Core\Controller\ControllerResolverInterface $controllerResolver
-   * @param \Symfony\Component\HttpKernel\Controller\ArgumentResolverInterface $argumentResolver
-   */
-  public function __construct(RouteProviderInterface $routeProvider, ControllerResolverInterface $controllerResolver, ArgumentResolverInterface $argumentResolver) {
-    $this->routeProvider = $routeProvider;
-    $this->controllerResolver = $controllerResolver;
-    $this->argumentResolver = $argumentResolver;
-  }
+  public function __construct(
+    protected RouteProviderInterface $routeProvider,
+    protected ControllerResolverInterface $controllerResolver,
+    protected ArgumentResolverInterface $argumentResolver,
+  ) {}
 
   /**
    * The request event handler.
