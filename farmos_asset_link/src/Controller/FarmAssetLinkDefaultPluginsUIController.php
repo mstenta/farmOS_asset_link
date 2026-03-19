@@ -18,7 +18,7 @@ class FarmAssetLinkDefaultPluginsUIController extends ControllerBase {
   /**
    * Calls a method on a data stream notification and reloads the listing page.
    *
-   * @param \Drupal\farmos_asset_link\Entity\AssetLinkDefaultPlugin $data_stream_notification
+   * @param \Drupal\farmos_asset_link\Entity\AssetLinkDefaultPlugin $asset_link_default_plugin
    *   The default plugin config entity.
    * @param string $op
    *   The operation to perform, e.g., 'enable' or 'disable'.
