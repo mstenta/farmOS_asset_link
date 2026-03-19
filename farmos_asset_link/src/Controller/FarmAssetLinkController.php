@@ -37,8 +37,10 @@ class FarmAssetLinkController extends ControllerBase {
       return $response;
     }
 
-    // This should never happen since a compliant web server should handle sending a 400 for requests with relative paths
-    // but since it could be a pretty bad security vulnerbility if this ever got through we'll defend against it.
+    // This should never happen since a compliant web server should handle
+    // sending a 400 for requests with relative paths, but since it could be a
+    // pretty bad security vulnerability if this ever got through we'll defend
+    // against it.
     // https://datatracker.ietf.org/doc/html/rfc7230#section-5.3.1
     if (strpos($path, '../') !== FALSE) {
       $response = new Response();
@@ -118,9 +120,10 @@ class FarmAssetLinkController extends ControllerBase {
 
     $response_content = file_get_contents($file_path);
 
-    // The file being served should always exist because when doesn't, we fall back on
-    // serving the `index.html` file. If that doesn't exist it probably means our front-end
-    // artifacts aren't available so return an HTTP 500 - our fault.
+    // The file being served should always exist because when doesn't, we fall
+    // back on serving the `index.html` file. If that doesn't exist it probably
+    // means our front-end artifacts aren't available so return an HTTP 500 -
+    // our fault.
     if ($response_content === FALSE) {
       return $this->textError(500, "Could not find Asset Link front-end resources - if this is happening in a development environment, make sure ./alinkjs has been built.");
     }

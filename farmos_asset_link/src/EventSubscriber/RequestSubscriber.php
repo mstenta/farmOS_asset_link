@@ -11,7 +11,7 @@ use Symfony\Component\HttpKernel\Event\RequestEvent;
 use Symfony\Component\HttpKernel\KernelEvents;
 
 /**
- * Responsible for routing all requests under /alink/* to the farmos_asset_link controller.
+ * Route all requests under /alink/* to the farmos_asset_link controller.
  */
 class RequestSubscriber implements EventSubscriberInterface  {
 
@@ -37,8 +37,8 @@ class RequestSubscriber implements EventSubscriberInterface  {
       return;
     }
 
-    // Otherwise, redirect all requests that start with "/alink" requests to a single
-    // route. Note: this is necessary because core doesn't have any other
+    // Otherwise, redirect all requests that start with "/alink" requests to a
+    // single route. Note: this is necessary because core doesn't have any other
     // way to really handle "wildcard/catch all" routes.
     if (strpos($path, '/alink') === 0) {
       $route = $this->routeProvider->getRouteByName('farmos_asset_link.content');
