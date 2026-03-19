@@ -44,12 +44,12 @@ use Drupal\farmos_asset_link\Form\AssetLinkDefaultPluginForm;
     ],
   ],
   links: [
-    'collection' => '/farm/settings/asset_link_default_plugin/list',
-    'add-form' => '/farm/settings/asset_link_default_plugin/add',
-    'edit-form' => '/farm/settings/asset_link_default_plugin/{asset_link_default_plugin}/edit',
-    'delete-form' => '/farm/settings/asset_link_default_plugin/{asset_link_default_plugin}/delete',
-    'enable' => '/farm/settings/asset_link_default_plugin/{asset_link_default_plugin}/enable',
-    'disable' => '/farm/settings/asset_link_default_plugin/{asset_link_default_plugin}/disable',
+    'collection' => '/farm/settings/asset_link/default_plugin/list',
+    'add-form' => '/farm/settings/asset_link/default_plugin/add',
+    'edit-form' => '/farm/settings/asset_link/default_plugin/{asset_link_default_plugin}/edit',
+    'delete-form' => '/farm/settings/asset_link/default_plugin/{asset_link_default_plugin}/delete',
+    'enable' => '/farm/settings/asset_link/default_plugin/{asset_link_default_plugin}/enable',
+    'disable' => '/farm/settings/asset_link/default_plugin/{asset_link_default_plugin}/disable',
   ],
   admin_permission: 'administer farm settings',
   label_count: [

@@ -1,4 +1,9 @@
-entity.asset_link_default_plugin.collection:
+farmos_asset_link.settings:
   base_route: farm.setup.settings
   route_name: entity.asset_link_default_plugin.collection
-  title: 'Asset Link default plugins'
+  title: 'Asset Link'
+
+entity.asset_link_default_plugin.collection:
+  route_name: entity.asset_link_default_plugin.collection
+  parent_id: farmos_asset_link.settings
+  title: 'Default plugins'
