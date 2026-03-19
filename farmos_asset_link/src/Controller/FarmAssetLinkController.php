@@ -40,7 +40,7 @@ class FarmAssetLinkController extends ControllerBase {
     // This should never happen since a compliant web server should handle sending a 400 for requests with relative paths
     // but since it could be a pretty bad security vulnerbility if this ever got through we'll defend against it.
     // https://datatracker.ietf.org/doc/html/rfc7230#section-5.3.1
-    if (strpos($path, '../') !== false) {
+    if (strpos($path, '../') !== FALSE) {
       $response = new Response();
       $response->setStatusCode(400);
       $response->headers->set('Content-Type', 'text/plain');
@@ -57,7 +57,7 @@ class FarmAssetLinkController extends ControllerBase {
 
     // Some paths under /alink should return an HTTP 404 instead of just
     // returning the index.html content.
-    $require_file_exists = false;
+    $require_file_exists = FALSE;
     $resource_dirs = [
       '/css/',
       '/fonts/',
@@ -68,7 +68,7 @@ class FarmAssetLinkController extends ControllerBase {
     ];
     foreach($resource_dirs as $resource_dir) {
       if (strpos($path_suffix, $resource_dir) === 0) {
-        $require_file_exists = true;
+        $require_file_exists = TRUE;
         break;
       }
     }
@@ -121,7 +121,7 @@ class FarmAssetLinkController extends ControllerBase {
     // The file being served should always exist because when doesn't, we fall back on
     // serving the `index.html` file. If that doesn't exist it probably means our front-end
     // artifacts aren't available so return an HTTP 500 - our fault.
-    if ($response_content === false) {
+    if ($response_content === FALSE) {
       return $this->textError(500, "Could not find Asset Link front-end resources - if this is happening in a development environment, make sure ./alinkjs has been built.");
     }
 
@@ -134,7 +134,7 @@ class FarmAssetLinkController extends ControllerBase {
 
     $cookie_expiry_epoch_sec = time() + (14 * 24 * 60 * 60);
 
-    $cookie = Cookie::create('assetLinkDrupalBasePath', $base_path, $expire = $cookie_expiry_epoch_sec, $path = '/', $domain = null, $secure = false, $httpOnly = false, $raw = true, $sameSite = 'Lax');
+    $cookie = Cookie::create('assetLinkDrupalBasePath', $base_path, $expire = $cookie_expiry_epoch_sec, $path = '/', $domain = NULL, $secure = FALSE, $httpOnly = FALSE, $raw = TRUE, $sameSite = 'Lax');
     $response->headers->setCookie($cookie);
 
     $response->headers->set('Content-Type', $content_type);

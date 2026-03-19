@@ -68,7 +68,7 @@ class AssetLinkDefaultPluginForm extends EntityForm {
 
     if (empty($plugin->id())) {
       $plugin->setId(Crypt::hashBase64($plugin->url()));
-      $plugin->setUserDefined(true);
+      $plugin->setUserDefined(TRUE);
     }
 
     $status = $plugin->save();
