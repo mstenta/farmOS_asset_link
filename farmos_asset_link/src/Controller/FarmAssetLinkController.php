@@ -170,6 +170,17 @@ class FarmAssetLinkController extends ControllerBase {
     return $mime_types[$extname] ?? 'application/octet-stream';
   }
 
+  /**
+   * Create a text error response.
+   *
+   * @param int $code
+   *   The status code.
+   * @param string $msg
+   *   The message.
+   *
+   * @return \Symfony\Component\HttpFoundation\Response
+   *   Returns a response object.
+   */
   private function textError($code, $msg) {
     $response = new Response();
     $response->setStatusCode($code);

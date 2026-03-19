@@ -92,6 +92,15 @@ class FarmAssetLinkModelsController extends ControllerBase {
     return new JsonResponse($models);
   }
 
+  /**
+   * Load JSON data from a path.
+   *
+   * @param string $path
+   *   The JSON data path.
+   *
+   * @return mixed
+   *   Returns the decoded JSON as a native PHP variable.
+   */
   private function loadPathAsJson($path) {
     $subRequest = Request::create($path, 'GET');
 
