@@ -1,6 +1,6 @@
 # farmOS_asset_link
 
-farmOS_asset_link - A.K.A "Asset Link" - is a contrib module for farmOS 4.x that supercharges links to your farmOS assets with an extensible hybrid
+farmOS_asset_link - A.K.A "Asset Link" - is a contrib module for farmOS that supercharges links to your farmOS assets with an extensible hybrid
 PWA experience.
 
 [![Introduction to Asset Link](https://user-images.githubusercontent.com/30754460/221234358-ceb8b952-14b8-4463-b0ec-14f2daf777c7.png)](https://www.youtube.com/watch?v=VMD80XYtdQg)
@@ -11,7 +11,7 @@ PWA experience.
 
 **Warning: *Asset Link is alpha software at this point. Please consider it highly experimental and don't use it for anything critical.***
 
-Use Composer and Drush to install farmOS_asset_link in farmOS 2.x;
+Use Composer and Drush to install farmOS_asset_link in farmOS;
 
 ```sh
 composer require 'drupal/farmos_asset_link:^0.0.1@dev'
