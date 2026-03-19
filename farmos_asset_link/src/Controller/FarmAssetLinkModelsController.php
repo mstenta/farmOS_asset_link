@@ -13,6 +13,10 @@ use Symfony\Component\HttpKernel\HttpKernelInterface;
  */
 class FarmAssetLinkModelsController extends ControllerBase {
 
+  public function __construct(
+    protected HttpKernelInterface $httpKernel,
+  ) {}
+
   /**
    * {@inheritdoc}
    */
@@ -88,11 +92,9 @@ class FarmAssetLinkModelsController extends ControllerBase {
   }
 
   private function loadPathAsJson($path) {
-    $httpKernel = \Drupal::service('http_kernel.basic');
-
     $subRequest = Request::create($path, 'GET');
 
-    $subResponse = $httpKernel->handle($subRequest, HttpKernelInterface::SUB_REQUEST);
+    $subResponse = $this->httpKernel->handle($subRequest, HttpKernelInterface::SUB_REQUEST);
     $content = $subResponse->getContent();
 
     return Json::decode($content);

@@ -4,6 +4,8 @@ namespace Drupal\farmos_asset_link\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Entity\EntityTypeManagerInterface;
+use Psr\Log\LoggerInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
@@ -12,6 +14,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 class FarmAssetLinkDefaultPluginRepositoryController extends ControllerBase {
 
   public function __construct(
+    #[Autowire(service: 'logger.channel.farmos_asset_link')]
+    protected LoggerInterface $logger,
     EntityTypeManagerInterface $entity_type_manager,
   ) {
     $this->entityTypeManager = $entity_type_manager;
@@ -23,8 +27,8 @@ class FarmAssetLinkDefaultPluginRepositoryController extends ControllerBase {
   public function render() {
     $base_path = base_path();
 
-    $storage = \Drupal::entityTypeManager()->getStorage('asset_link_default_plugin');
-    $ids = \Drupal::entityQuery('asset_link_default_plugin')->execute();
+    $storage = $this->entityTypeManager->getStorage('asset_link_default_plugin');
+    $ids = $storage->getQuery('asset_link_default_plugin')->execute();
     $defaultPluginConfigs = $storage->loadMultiple($ids);
 
     $plugins = [];
@@ -39,7 +43,7 @@ class FarmAssetLinkDefaultPluginRepositoryController extends ControllerBase {
       $moduleScopePos = strpos($url, '{module:');
       if ($moduleScopePos > -1) {
           if ($moduleScopePos !== 0) {
-              \Drupal::logger('farmos_asset_link')->notice("Invalid use of module scope for Asset Link plugin url in config " . $defaultPluginConfig->getConfigDependencyName());
+              $this->logger->notice("Invalid use of module scope for Asset Link plugin url in config " . $defaultPluginConfig->getConfigDependencyName());
               continue;
           }
 
@@ -48,7 +52,7 @@ class FarmAssetLinkDefaultPluginRepositoryController extends ControllerBase {
           $expectedPrefix = $defaultPluginConfig->id() . ".alink.";
 
           if (strpos($urlSuffix, $expectedPrefix) !== 0) {
-              \Drupal::logger('farmos_asset_link')->notice("Invalid use of module scope for Asset Link plugin url - expected url following module scope to be '$expectedSuffix'. Instead got '$urlSuffix'");
+            $this->logger->notice("Invalid use of module scope for Asset Link plugin url - expected url following module scope to be '$expectedSuffix'. Instead got '$urlSuffix'");
               continue;
           }
 

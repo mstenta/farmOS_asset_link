@@ -4,6 +4,7 @@ namespace Drupal\farmos_asset_link\Controller;
 
 use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Extension\ModuleHandlerInterface;
+use Drupal\Core\File\FileSystemInterface;
 use Symfony\Component\HttpFoundation\Cookie;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,6 +16,7 @@ class FarmAssetLinkController extends ControllerBase {
 
   public function __construct(
     protected RequestStack $requestStack,
+    protected FileSystemInterface $fileSystem,
     ModuleHandlerInterface $module_handler,
   ) {
     $this->moduleHandler = $module_handler;
@@ -46,8 +48,7 @@ class FarmAssetLinkController extends ControllerBase {
       return $response;
     }
 
-    // @todo Use injected services here.
-    $module_base_path = \Drupal::service('file_system')->realpath(\Drupal::service('module_handler')->getModule('farmos_asset_link')->getPath());
+    $module_base_path = $this->fileSystem->realpath($this->moduleHandler->getModule('farmos_asset_link')->getPath());
 
     $asset_link_dist_path = "$module_base_path/asset-link-dist/";
 
@@ -85,7 +86,7 @@ class FarmAssetLinkController extends ControllerBase {
 
         $modulePluginCfgId = substr($modulePluginPathSuffix, 0, $modulePluginCfgIdEndPos);
 
-        $storage = \Drupal::entityTypeManager()->getStorage('asset_link_default_plugin');
+        $storage = $this->entityTypeManager->getStorage('asset_link_default_plugin');
 
         $defaultPluginConfig = $storage->load($modulePluginCfgId);
 
@@ -100,7 +101,7 @@ class FarmAssetLinkController extends ControllerBase {
 
         $moduleName = $matches['module'];
 
-        $module_base_path = \Drupal::service('file_system')->realpath(\Drupal::service('module_handler')->getModule($moduleName)->getPath());
+        $module_base_path = $this->fileSystem->realpath($this->moduleHandler->getModule($moduleName)->getPath());
 
         $file_path = $module_base_path . '/' . $modulePluginPathSuffix;
     }
