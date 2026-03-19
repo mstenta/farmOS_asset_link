@@ -21,7 +21,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- [Declare support for farmOS 4.x #49](Declare support for farmOS 4.x #49)
+- [Declare support for farmOS 4.x #49](https://github.com/symbioquine/farmOS_asset_link/pull/49)
 
 ## [1.0.0-alpha16] - 2024-11-18
 
