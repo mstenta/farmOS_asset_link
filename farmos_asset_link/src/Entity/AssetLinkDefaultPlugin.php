@@ -88,8 +88,7 @@ class AssetLinkDefaultPlugin extends ConfigEntityBase implements ConfigEntityInt
   protected $status;
 
   /**
-   * Whether the plugin was user defined - as opposed to
-   * provided by a farmOS module.
+   * Whether the plugin was user defined (not provided by a farmOS module).
    *
    * @var bool
    */

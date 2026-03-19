@@ -7,14 +7,15 @@ use Drupal\Core\Routing\Access\AccessInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
 
 /**
+ * Deletable plugin access logic.
+ *
  * Checks whether delete routes are accessible based on whether default plugins
  * are user defined.
  */
 class AssetLinkDefaultPluginDeletableAccessCheck implements AccessInterface {
 
   /**
-   * A custom access check to filter delete routes for non-user-defined
-   * default plugins.
+   * Filter delete routes for non-user-defined default plugins.
    *
    * @param \Drupal\Core\Routing\RouteMatchInterface $route_match
    *   The route match.
