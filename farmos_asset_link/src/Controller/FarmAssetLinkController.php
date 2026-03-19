@@ -145,7 +145,17 @@ class FarmAssetLinkController extends ControllerBase {
     return $response;
   }
 
-  // roughly based on https://developer.mozilla.org/en-US/docs/Learn/Server-side/Node_server_without_framework
+  /**
+   * Get content mime type.
+   *
+   * Roughly based on https://developer.mozilla.org/en-US/docs/Learn/Server-side/Node_server_without_framework.
+   *
+   * @param string $file_path
+   *   The file path.
+   *
+   * @return string
+   *   Returns a mime type.
+   */
   private function getContentMimetype($file_path) {
     $extname = pathinfo($file_path, PATHINFO_EXTENSION);
 
