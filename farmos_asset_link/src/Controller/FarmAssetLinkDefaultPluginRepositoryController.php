@@ -20,7 +20,7 @@ class FarmAssetLinkDefaultPluginRepositoryController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  public function Render() {
+  public function render() {
     $base_path = base_path();
 
     $storage = \Drupal::entityTypeManager()->getStorage('asset_link_default_plugin');

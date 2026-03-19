@@ -14,7 +14,7 @@ class FarmAssetLinkMapController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  public function Render() {
+  public function render() {
     $build = [
       'map-prototype' => [
         '#type' => 'farm_map',

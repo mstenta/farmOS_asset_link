@@ -8,21 +8,21 @@ farmos_asset_link.content:
 farmos_asset_link.map:
   path: '/alink/backend/map-src'
   defaults:
-    _controller: '\Drupal\farmos_asset_link\Controller\FarmAssetLinkMapController::Render'
+    _controller: '\Drupal\farmos_asset_link\Controller\FarmAssetLinkMapController::render'
   requirements:
     _permission: 'access content'
 
 farmos_asset_link.default_plugins:
   path: '/alink/backend/default-plugins.repo.json'
   defaults:
-    _controller: '\Drupal\farmos_asset_link\Controller\FarmAssetLinkDefaultPluginRepositoryController::Render'
+    _controller: '\Drupal\farmos_asset_link\Controller\FarmAssetLinkDefaultPluginRepositoryController::render'
   requirements:
     _permission: 'access content'
 
 farmos_asset_link.models:
   path: '/alink/backend/models.json'
   defaults:
-    _controller: '\Drupal\farmos_asset_link\Controller\FarmAssetLinkModelsController::Render'
+    _controller: '\Drupal\farmos_asset_link\Controller\FarmAssetLinkModelsController::render'
   requirements:
     _permission: 'access content'
 

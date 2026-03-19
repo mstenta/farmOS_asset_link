@@ -16,7 +16,7 @@ class FarmAssetLinkModelsController extends ControllerBase {
   /**
    * {@inheritdoc}
    */
-  public function Render() {
+  public function render() {
     $serverSchema = $this->loadPathAsJson('/api/schema');
 
     $models = [];
