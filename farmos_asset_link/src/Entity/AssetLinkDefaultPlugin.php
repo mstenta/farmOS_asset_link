@@ -74,7 +74,7 @@ class AssetLinkDefaultPlugin extends ConfigEntityBase implements ConfigEntityInt
   protected $url;
 
   /**
-   * The URL whitelist regex for which pages the sidebar loads on
+   * The URL whitelist regex for which pages the sidebar loads on.
    *
    * @var string
    */
