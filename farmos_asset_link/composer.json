@@ -18,6 +18,6 @@
   "minimum-stability": "dev",
   "require": {
     "drupal/subrequests": "^3.0",
-    "farmos/farmos": "^2 || ^3 || ^4"
+    "farmos/farmos": "^4"
   }
 }
