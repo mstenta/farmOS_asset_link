@@ -26,7 +26,8 @@ class EntityHooks {
    * bundle-level permissions. e.g. Allow image uploads for animal assets if the
    * user has 'create animal asset' permissions.
    *
-   * TODO: Follow up on https://github.com/farmOS/farmOS/pull/563#issuecomment-1241952618
+   * @todo Follow up on farmOS core issue: Fix JSON:API permission issue so non-admin users can upload files #563
+   * @see https://github.com/farmOS/farmOS/pull/563#issuecomment-1241952618
    */
   #[Hook('entity_create_access')]
   public function entityCreateAccess($account, $context, $entity_bundle) {

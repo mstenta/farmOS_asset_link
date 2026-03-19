@@ -32,7 +32,7 @@
   sidebar.id = "asset-link-floating-sidebar";
   container.appendChild(sidebar);
 
-  // TODO: Honor base path here
+  // @todo Honor base path here.
   const data = await fetch('/alink/sidecar/assets-manifest.json');
 
   const json = await data.json();
@@ -45,7 +45,7 @@
 
   for (const requiredJsFile of requiredJsFiles) {
     console.log("Importing sidecar...", requiredJsFile);
-    // TODO: Honor base path here
+    // @todo Honor base path here.
     await import(`/alink/sidecar/${requiredJsFile}`);
   }
 })();

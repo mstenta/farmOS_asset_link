@@ -21,7 +21,7 @@ class PageHooks {
    */
   #[Hook('page_attachments')]
   public function pageAttachments(array &$attachments) {
-    // TODO: special handling for not-yet-logged-in users
+    // @todo Add special handling for not-yet-logged-in users.
 
     $storage = $this->entityTypeManager->getStorage('asset_link_default_plugin');
 

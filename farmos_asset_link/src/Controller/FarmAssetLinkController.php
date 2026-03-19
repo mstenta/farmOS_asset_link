@@ -46,7 +46,7 @@ class FarmAssetLinkController extends ControllerBase {
       return $response;
     }
 
-    // TODO: Use injected services here
+    // @todo Use injected services here.
     $module_base_path = \Drupal::service('file_system')->realpath(\Drupal::service('module_handler')->getModule('farmos_asset_link')->getPath());
 
     $asset_link_dist_path = "$module_base_path/asset-link-dist/";
