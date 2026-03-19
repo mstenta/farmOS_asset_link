@@ -1,5 +1,4 @@
 <?php
-// Based on https://drupal.stackexchange.com/a/284722
 
 namespace Drupal\farmos_asset_link\EventSubscriber;
 
@@ -61,6 +60,7 @@ class RequestSubscriber implements EventSubscriberInterface  {
    */
   public static function getSubscribedEvents() {
     // Check for /app requests.
+    // Based on https://drupal.stackexchange.com/a/284722
     $events[KernelEvents::REQUEST][] = ['checkAppRequest', 1000];
     return $events;
   }
