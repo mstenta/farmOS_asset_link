@@ -4,7 +4,6 @@ namespace Drupal\farmos_asset_link\Entity;
 
 use Drupal\Core\Config\Entity\ConfigEntityBase;
 use Drupal\Core\Config\Entity\ConfigEntityInterface;
-use Drupal\Core\Entity\EntityWithPluginCollectionInterface;
 
 /**
  * Defines the AssetLinkDefaultPlugin entity.
