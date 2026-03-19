@@ -2,9 +2,9 @@
 
 namespace Drupal\farmos_asset_link\Access;
 
+use Drupal\Core\Access\AccessResult;
 use Drupal\Core\Routing\Access\AccessInterface;
 use Drupal\Core\Routing\RouteMatchInterface;
-use Drupal\Core\Access\AccessResult;
 
 /**
  * Checks whether delete routes are accessible based on whether default plugins

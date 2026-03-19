@@ -2,9 +2,9 @@
 
 namespace Drupal\farmos_asset_link\Controller;
 
-use Drupal\Core\Controller\ControllerBase;
 use Drupal\Core\Ajax\AjaxResponse;
 use Drupal\Core\Ajax\InsertCommand;
+use Drupal\Core\Controller\ControllerBase;
 
 /**
  * Defines FarmAssetLinkMapController class.
