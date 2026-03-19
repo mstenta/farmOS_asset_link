@@ -19,3 +19,8 @@ services:
     class: Drupal\farmos_asset_link\Access\AssetLinkDefaultPluginDeletableAccessCheck
     tags:
       - { name: access_check, applies_to: _asset_link_default_plugin_delete_access }
+
+  logger.channel.farmos_asset_link:
+    parent: logger.channel_base
+    arguments:
+      $channel: 'farmos_asset_link'
