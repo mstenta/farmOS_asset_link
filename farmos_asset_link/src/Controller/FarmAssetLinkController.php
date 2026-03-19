@@ -52,7 +52,7 @@ class FarmAssetLinkController extends ControllerBase {
 
     $asset_link_dist_path = "$module_base_path/asset-link-dist/";
 
-    // Remove the '/alink' prefix
+    // Remove the '/alink' prefix.
     $path_suffix = substr($path, 6);
 
     // Some paths under /alink should return an HTTP 404 instead of just

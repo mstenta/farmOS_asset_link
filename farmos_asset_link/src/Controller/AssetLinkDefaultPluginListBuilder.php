@@ -42,7 +42,7 @@ class AssetLinkDefaultPluginListBuilder extends ConfigEntityListBuilder {
     // separate buttons for.
     unset($operations['edit']);
 
-    // Only allow deleting user-defined default plugins
+    // Only allow deleting user-defined default plugins.
     if (!$entity->userDefined()) {
       unset($operations['delete']);
     }
@@ -73,7 +73,7 @@ class AssetLinkDefaultPluginListBuilder extends ConfigEntityListBuilder {
   public function render() {
     $list = parent::render();
 
-    // Add a custom ID to the table so it can be replaced via an AJAX command
+    // Add a custom ID to the table so it can be replaced via an AJAX command.
     $list['#type'] = 'container';
     $list['#attributes']['id'] = 'asset-link-default-plugin-entity-list';
 

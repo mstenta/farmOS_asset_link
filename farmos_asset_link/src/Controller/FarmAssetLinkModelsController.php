@@ -48,7 +48,7 @@ class FarmAssetLinkModelsController extends ControllerBase {
             continue;
           }
 
-          // Orbit.js seems to only support 'number', not 'integer' but handles the former well enough
+          // Orbit.js seems to only support 'number', not 'integer' but handles the former well enough.
           if ($attr['type'] === 'integer') {
             $attr['type'] = 'number';
           }
