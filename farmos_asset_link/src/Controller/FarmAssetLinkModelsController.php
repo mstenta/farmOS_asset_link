@@ -25,25 +25,25 @@ class FarmAssetLinkModelsController extends ControllerBase {
 
     $models = [];
 
-    foreach($serverSchema['allOf'] as $schemaRef) {
+    foreach ($serverSchema['allOf'] as $schemaRef) {
       if (empty($schemaRef['links'])) {
         continue;
       }
 
-      foreach($schemaRef['links'] as $serverRelatedSchema) {
+      foreach ($schemaRef['links'] as $serverRelatedSchema) {
         $schemaUrl = is_array($serverRelatedSchema['targetSchema']) ? $serverRelatedSchema['targetSchema']['$ref'] : $serverRelatedSchema['targetSchema'];
 
         $relatedSchema = $this->loadPathAsJson($schemaUrl);
 
         $relatedItemSchema = $this->loadPathAsJson($relatedSchema['definitions']['data']['items']['$ref']);
-  
+
         $typeName = $relatedItemSchema['definitions']['type']['const'];
 
         $model = [];
 
         $modelAttributes = [];
 
-        foreach($relatedItemSchema['definitions']['attributes']['properties'] as $attrName => $attr) {
+        foreach ($relatedItemSchema['definitions']['attributes']['properties'] as $attrName => $attr) {
           if (!$attr) {
             continue;
           }
@@ -66,7 +66,7 @@ class FarmAssetLinkModelsController extends ControllerBase {
 
         $modelRelationships = [];
 
-        foreach($relatedItemSchema['definitions']['relationships']['properties'] as $attrName => $propSchema) {
+        foreach ($relatedItemSchema['definitions']['relationships']['properties'] as $attrName => $propSchema) {
           $propType = $propSchema['properties']['data']['type'] ?? '';
 
           // https://github.com/bradjones1/orbit-schema-from-openapi/blob/cde8d885152b3d88b9352669c97099ca1c13a2ff/index.js#L160-L172
@@ -75,7 +75,8 @@ class FarmAssetLinkModelsController extends ControllerBase {
               'kind' => 'hasMany',
               'type' => $propSchema['properties']['data']['items']['properties']['type']['enum'] ?? NULL,
             ];
-          } else {
+          }
+          else {
             $modelRelationships[$attrName] = [
               'kind' => 'hasOne',
               'type' => $propSchema['properties']['data']['properties']['type']['enum'] ?? NULL,

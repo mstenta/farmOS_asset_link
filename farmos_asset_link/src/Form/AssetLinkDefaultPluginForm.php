@@ -98,4 +98,3 @@ class AssetLinkDefaultPluginForm extends EntityForm {
   }
 
 }
-

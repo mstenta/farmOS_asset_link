@@ -144,5 +144,3 @@ class AssetLinkDefaultPlugin extends ConfigEntityBase implements ConfigEntityInt
   }
 
 }
-
-

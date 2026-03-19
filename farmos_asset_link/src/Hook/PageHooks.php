@@ -32,7 +32,7 @@ class PageHooks {
 
     $sidebarUrlPatterns = [];
 
-    foreach($defaultPluginConfigs as $defaultPluginConfig) {
+    foreach ($defaultPluginConfigs as $defaultPluginConfig) {
       if (!$defaultPluginConfig->status()) {
         continue;
       }

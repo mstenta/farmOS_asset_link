@@ -13,7 +13,7 @@ use Symfony\Component\HttpKernel\KernelEvents;
 /**
  * Route all requests under /alink/* to the farmos_asset_link controller.
  */
-class RequestSubscriber implements EventSubscriberInterface  {
+class RequestSubscriber implements EventSubscriberInterface {
 
   public function __construct(
     protected RouteProviderInterface $routeProvider,

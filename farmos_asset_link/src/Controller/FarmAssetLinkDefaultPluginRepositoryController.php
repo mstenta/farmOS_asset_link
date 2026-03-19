@@ -33,7 +33,7 @@ class FarmAssetLinkDefaultPluginRepositoryController extends ControllerBase {
 
     $plugins = [];
 
-    foreach($defaultPluginConfigs as $defaultPluginConfig) {
+    foreach ($defaultPluginConfigs as $defaultPluginConfig) {
       if (!$defaultPluginConfig->status()) {
         continue;
       }
@@ -42,21 +42,21 @@ class FarmAssetLinkDefaultPluginRepositoryController extends ControllerBase {
 
       $moduleScopePos = strpos($url, '{module:');
       if ($moduleScopePos > -1) {
-          if ($moduleScopePos !== 0) {
-              $this->logger->notice("Invalid use of module scope for Asset Link plugin url in config " . $defaultPluginConfig->getConfigDependencyName());
-              continue;
-          }
+        if ($moduleScopePos !== 0) {
+          $this->logger->notice("Invalid use of module scope for Asset Link plugin url in config " . $defaultPluginConfig->getConfigDependencyName());
+          continue;
+        }
 
-          $urlSuffix = preg_replace('/^\{module:[^\}]+\}\/?/', "", $url);
+        $urlSuffix = preg_replace('/^\{module:[^\}]+\}\/?/', "", $url);
 
-          $expectedPrefix = $defaultPluginConfig->id() . ".alink.";
+        $expectedPrefix = $defaultPluginConfig->id() . ".alink.";
 
-          if (strpos($urlSuffix, $expectedPrefix) !== 0) {
-            $this->logger->notice("Invalid use of module scope for Asset Link plugin url - expected url following module scope to be '$expectedSuffix'. Instead got '$urlSuffix'");
-              continue;
-          }
+        if (strpos($urlSuffix, $expectedPrefix) !== 0) {
+          $this->logger->notice("Invalid use of module scope for Asset Link plugin url - expected url following module scope to be '$expectedSuffix'. Instead got '$urlSuffix'");
+          continue;
+        }
 
-          $url = "{base_path}alink/plugins/~$urlSuffix";
+        $url = "{base_path}alink/plugins/~$urlSuffix";
       }
 
       $url = str_replace("{base_path}", $base_path, $url);
@@ -64,7 +64,7 @@ class FarmAssetLinkDefaultPluginRepositoryController extends ControllerBase {
       $plugins[] = ['url' => $url];
     }
 
-    return new JsonResponse([ 'plugins' => $plugins ]);
+    return new JsonResponse(['plugins' => $plugins]);
   }
 
 }

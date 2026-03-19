@@ -68,7 +68,7 @@ class FarmAssetLinkController extends ControllerBase {
       '/plugins/',
       '/sidecar/',
     ];
-    foreach($resource_dirs as $resource_dir) {
+    foreach ($resource_dirs as $resource_dir) {
       if (strpos($path_suffix, $resource_dir) === 0) {
         $require_file_exists = TRUE;
         break;
@@ -78,34 +78,34 @@ class FarmAssetLinkController extends ControllerBase {
     $file_path = $asset_link_dist_path . $path_suffix;
 
     if (strpos($path_suffix, '/plugins/~') === 0) {
-        $modulePluginPathSuffix = substr($path_suffix, 10);
+      $modulePluginPathSuffix = substr($path_suffix, 10);
 
-        $modulePluginCfgIdEndPos = strpos($modulePluginPathSuffix, '.alink.');
+      $modulePluginCfgIdEndPos = strpos($modulePluginPathSuffix, '.alink.');
 
-        if ($modulePluginCfgIdEndPos <= 0) {
-            return $this->textError(400, "Invalid module plugin URL. Must contain the plugin name followed by .alink.{ext}");
-        }
+      if ($modulePluginCfgIdEndPos <= 0) {
+        return $this->textError(400, "Invalid module plugin URL. Must contain the plugin name followed by .alink.{ext}");
+      }
 
-        $modulePluginCfgId = substr($modulePluginPathSuffix, 0, $modulePluginCfgIdEndPos);
+      $modulePluginCfgId = substr($modulePluginPathSuffix, 0, $modulePluginCfgIdEndPos);
 
-        $storage = $this->entityTypeManager->getStorage('asset_link_default_plugin');
+      $storage = $this->entityTypeManager->getStorage('asset_link_default_plugin');
 
-        $defaultPluginConfig = $storage->load($modulePluginCfgId);
+      $defaultPluginConfig = $storage->load($modulePluginCfgId);
 
-        if (empty($defaultPluginConfig)) {
-            return $this->textError(404, "Unknown Asset Link Plugin config '$modulePluginCfgId'");
-        }
+      if (empty($defaultPluginConfig)) {
+        return $this->textError(404, "Unknown Asset Link Plugin config '$modulePluginCfgId'");
+      }
 
-        $matches = [];
-        if (!preg_match('/^\{module:(?P<module>[^\}]+)\}/', $defaultPluginConfig->url(), $matches)) {
-            return $this->textError(400, "Asset Link Plugin is not module scoped '{$defaultPluginConfig->url()}'");
-        }
+      $matches = [];
+      if (!preg_match('/^\{module:(?P<module>[^\}]+)\}/', $defaultPluginConfig->url(), $matches)) {
+        return $this->textError(400, "Asset Link Plugin is not module scoped '{$defaultPluginConfig->url()}'");
+      }
 
-        $moduleName = $matches['module'];
+      $moduleName = $matches['module'];
 
-        $module_base_path = $this->fileSystem->realpath($this->moduleHandler->getModule($moduleName)->getPath());
+      $module_base_path = $this->fileSystem->realpath($this->moduleHandler->getModule($moduleName)->getPath());
 
-        $file_path = $module_base_path . '/' . $modulePluginPathSuffix;
+      $file_path = $module_base_path . '/' . $modulePluginPathSuffix;
     }
 
     if ($require_file_exists && !file_exists($file_path)) {

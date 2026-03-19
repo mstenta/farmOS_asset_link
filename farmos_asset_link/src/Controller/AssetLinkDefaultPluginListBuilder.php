@@ -67,7 +67,7 @@ class AssetLinkDefaultPluginListBuilder extends ConfigEntityListBuilder {
     return $operations;
   }
 
-    /**
+  /**
    * {@inheritdoc}
    */
   public function render() {
