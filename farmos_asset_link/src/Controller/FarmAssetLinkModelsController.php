@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\farmos_asset_link\Controller;
 
 use Drupal\Component\Serialization\Json;

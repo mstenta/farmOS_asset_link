@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Drupal\farmos_asset_link\EventSubscriber;
 
 use Drupal\Core\Controller\ControllerResolverInterface;
