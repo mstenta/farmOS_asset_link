@@ -61,7 +61,7 @@ class RequestSubscriber implements EventSubscriberInterface {
   /**
    * {@inheritdoc}
    */
-  public static function getSubscribedEvents() {
+  public static function getSubscribedEvents(): array {
     // Check for /app requests.
     // Based on https://drupal.stackexchange.com/a/284722
     $events[KernelEvents::REQUEST][] = ['checkAppRequest', 1000];
