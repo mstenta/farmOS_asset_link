@@ -90,6 +90,8 @@ class AssetLinkDefaultPluginForm extends EntityForm {
     }
 
     $form_state->setRedirect('entity.asset_link_default_plugin.collection');
+
+    return $status;
   }
 
   /**
