@@ -25,7 +25,7 @@ class PageHooks {
 
     $storage = $this->entityTypeManager->getStorage('asset_link_default_plugin');
 
-    $ids = $storage->getQuery()
+    $ids = $storage->getQuery()->accessCheck(TRUE)
       ->condition('sidebarUrlPattern', '', '<>')->execute();
 
     /** @var \Drupal\farmos_asset_link\Entity\AssetLinkDefaultPlugin[] $defaultPluginConfigs */

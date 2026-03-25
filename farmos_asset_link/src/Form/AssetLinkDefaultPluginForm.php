@@ -97,6 +97,7 @@ class AssetLinkDefaultPluginForm extends EntityForm {
    */
   public function exist($id) {
     $entity = $this->entityTypeManager->getStorage('asset_link_default_plugin')->getQuery()
+      ->accessCheck(FALSE)
       ->condition('id', $id)
       ->execute();
     return (bool) $entity;
