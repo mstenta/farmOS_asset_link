@@ -45,6 +45,7 @@ class RequestSubscriber implements EventSubscriberInterface {
     if (strpos($path, '/alink') === 0) {
       $route = $this->routeProvider->getRouteByName('farmos_asset_link.content');
       $definition = $route->getDefault('_controller');
+      // @phpstan-ignore arguments.count
       $controller = $this->controllerResolver->getControllerFromDefinition($definition, $path);
       $arguments = $this->argumentResolver->getArguments($request, $controller);
       $response = \call_user_func_array($controller, $arguments);
