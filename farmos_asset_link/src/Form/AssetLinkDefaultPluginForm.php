@@ -19,6 +19,7 @@ class AssetLinkDefaultPluginForm extends EntityForm {
   public function form(array $form, FormStateInterface $form_state) {
     $form = parent::form($form, $form_state);
 
+    /** @var \Drupal\farmos_asset_link\Entity\AssetLinkDefaultPlugin $plugin */
     $plugin = $this->entity;
 
     $form['url'] = [
@@ -42,7 +43,7 @@ class AssetLinkDefaultPluginForm extends EntityForm {
     $form['status'] = [
       '#type' => 'checkbox',
       '#title' => $this->t('Enabled'),
-      '#default_value' => $this->entity->status(),
+      '#default_value' => $plugin->status(),
     ];
 
     return $form;
@@ -54,6 +55,7 @@ class AssetLinkDefaultPluginForm extends EntityForm {
   public function actions(array $form, FormStateInterface $form_state) {
     $actions = parent::actions($form, $form_state);
 
+    /** @var \Drupal\farmos_asset_link\Entity\AssetLinkDefaultPlugin $plugin */
     $plugin = $this->entity;
     if (!$plugin->userDefined()) {
       unset($actions['delete']);
@@ -66,6 +68,7 @@ class AssetLinkDefaultPluginForm extends EntityForm {
    * {@inheritdoc}
    */
   public function save(array $form, FormStateInterface $form_state) {
+    /** @var \Drupal\farmos_asset_link\Entity\AssetLinkDefaultPlugin $plugin */
     $plugin = $this->entity;
 
     if (empty($plugin->id())) {

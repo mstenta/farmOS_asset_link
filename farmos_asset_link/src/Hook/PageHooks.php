@@ -28,6 +28,7 @@ class PageHooks {
     $ids = $storage->getQuery()
       ->condition('sidebarUrlPattern', '', '<>')->execute();
 
+    /** @var \Drupal\farmos_asset_link\Entity\AssetLinkDefaultPlugin[] $defaultPluginConfigs */
     $defaultPluginConfigs = $storage->loadMultiple($ids);
 
     $sidebarUrlPatterns = [];

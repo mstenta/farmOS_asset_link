@@ -92,6 +92,7 @@ class FarmAssetLinkController extends ControllerBase {
 
       $storage = $this->entityTypeManager->getStorage('asset_link_default_plugin');
 
+      /** @var \Drupal\farmos_asset_link\Entity\AssetLinkDefaultPlugin|null $defaultPluginConfig */
       $defaultPluginConfig = $storage->load($modulePluginCfgId);
 
       if (empty($defaultPluginConfig)) {

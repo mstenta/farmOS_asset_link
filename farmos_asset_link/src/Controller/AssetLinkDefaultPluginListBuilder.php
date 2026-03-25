@@ -26,6 +26,7 @@ class AssetLinkDefaultPluginListBuilder extends ConfigEntityListBuilder {
    * {@inheritdoc}
    */
   public function buildRow(EntityInterface $entity) {
+    /** @var \Drupal\farmos_asset_link\Entity\AssetLinkDefaultPlugin $entity */
     $row['url'] = $entity->url();
     $row['sidebarUrlPattern'] = $entity->sidebarUrlPattern();
     $row['status'] = $entity->status() ? $this->t('Enabled') : $this->t('Disabled');
@@ -37,6 +38,7 @@ class AssetLinkDefaultPluginListBuilder extends ConfigEntityListBuilder {
    * {@inheritdoc}
    */
   public function getDefaultOperations(EntityInterface $entity) {
+    /** @var \Drupal\farmos_asset_link\Entity\AssetLinkDefaultPlugin $entity */
     $operations = parent::getDefaultOperations($entity);
 
     // Remove the 'edit' operation since it effectively only

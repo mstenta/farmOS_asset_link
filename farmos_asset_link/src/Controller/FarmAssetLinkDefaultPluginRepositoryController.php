@@ -31,6 +31,7 @@ class FarmAssetLinkDefaultPluginRepositoryController extends ControllerBase {
 
     $storage = $this->entityTypeManager->getStorage('asset_link_default_plugin');
     $ids = $storage->getQuery('asset_link_default_plugin')->execute();
+    /** @var \Drupal\farmos_asset_link\Entity\AssetLinkDefaultPlugin[] $defaultPluginConfigs */
     $defaultPluginConfigs = $storage->loadMultiple($ids);
 
     $plugins = [];
