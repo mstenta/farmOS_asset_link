@@ -55,7 +55,7 @@ class FarmAssetLinkDefaultPluginRepositoryController extends ControllerBase {
         $expectedPrefix = $defaultPluginConfig->id() . ".alink.";
 
         if (strpos($urlSuffix, $expectedPrefix) !== 0) {
-          $this->logger->notice("Invalid use of module scope for Asset Link plugin url - expected url following module scope to be '$expectedSuffix'. Instead got '$urlSuffix'");
+          $this->logger->notice("Invalid use of module scope for Asset Link plugin url - expected url following module scope to be '$expectedPrefix'. Instead got '$urlSuffix'");
           continue;
         }
 
