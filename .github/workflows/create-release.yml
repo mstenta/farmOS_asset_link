@@ -25,7 +25,7 @@ jobs:
           ref: release
           fetch-depth: 0
 
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
 
@@ -80,7 +80,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org/
@@ -98,7 +98,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v6
         with:
           node-version: 20
           registry-url: https://registry.npmjs.org/
@@ -117,7 +117,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v5
 
-    - uses: actions/setup-node@v1
+    - uses: actions/setup-node@v6
       with:
         node-version: 20
 
