@@ -19,7 +19,7 @@ jobs:
       PACKAGE_NAME: symbioquine/farmos_asset_link
     steps:
       - name: Checkout this repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v5
         with:
           path: ${{ env.MODULE_NAME }}
       - name: Run farmOS development environment containers.

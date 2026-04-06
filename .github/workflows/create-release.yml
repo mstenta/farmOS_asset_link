@@ -14,12 +14,12 @@ jobs:
         run: echo "RELEASE_VERSION=${GITHUB_REF:19}" >> $GITHUB_ENV
 
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
         with:
           path: main
 
       - name: Checkout release branch
-        uses: actions/checkout@v2
+        uses: actions/checkout@v5
         with:
           path: release
           ref: release
@@ -79,7 +79,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
       - uses: actions/setup-node@v1
         with:
           node-version: 20
@@ -97,7 +97,7 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v5
       - uses: actions/setup-node@v1
         with:
           node-version: 20
@@ -115,7 +115,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v5
 
     - uses: actions/setup-node@v1
       with:
