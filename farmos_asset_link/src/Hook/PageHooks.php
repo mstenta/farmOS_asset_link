@@ -6,6 +6,7 @@ namespace Drupal\farmos_asset_link\Hook;
 
 use Drupal\Core\Entity\EntityTypeManagerInterface;
 use Drupal\Core\Hook\Attribute\Hook;
+use Drupal\Core\Session\AccountInterface;
 
 /**
  * Page hook implementations for farmos_asset_link.
@@ -14,6 +15,7 @@ class PageHooks {
 
   public function __construct(
     protected EntityTypeManagerInterface $entityTypeManager,
+    protected AccountInterface $currentUser,
   ) {}
 
   /**
@@ -21,7 +23,11 @@ class PageHooks {
    */
   #[Hook('page_attachments')]
   public function pageAttachments(array &$attachments) {
-    // @todo Add special handling for not-yet-logged-in users.
+
+    // If the user is not logged in, do nothing.
+    if ($this->currentUser->isAnonymous()) {
+      return;
+    }
 
     $storage = $this->entityTypeManager->getStorage('asset_link_default_plugin');
 
